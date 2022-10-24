@@ -9,15 +9,20 @@ include "./view/header.php";
 <p class="text-center text-[24px] font-[600] text-black mt-5 uppercase">all products</p>
 <div class="flex w-[70%] mx-auto mt-5">
     <div class="basis-1/5">
-        <p class="text-[16px] font-[600]">DANH MỤC SẢN PHẨM</p>
-        <p class="text-[14px] font-[500] hover:text-[#EA2F38] mt-1"><a href="#">Trang chủ</a></p>
-        <p class="text-[14px] font-[500] hover:text-[#EA2F38] mt-1"><a href="#">Sản phẩm</a></p>
-        <p class="text-[14px] font-[500] hover:text-[#EA2F38] mt-1"><a href="#">Giới thiệu</a></p>
-        <p class="text-[14px] font-[500] hover:text-[#EA2F38] mt-1"><a href="#">Tin tức</a></p>
+        <p class="text-[1.5em] font-[600]">category</p>
+        <?php
+        foreach ($list_category as $category){
+extract($category);
+echo'
+            <p class="text-[1.5em] font-[500] hover:text-[#EA2F38] mt-1"><a href="#">'.$name_cate.'</a>
+        </p>
+        ';
+        }
+?>
     </div>
     <div class="basis-3/4">
         <div class="grid grid-cols-3 gap-12">
-<?php 
+            <?php 
 foreach ($list_product as $product){
     extract($product);
     $name_pro_short = (strlen($name_pro) < 20) ? substr($name_pro, 0, 20) : (substr($name_pro, 0, 20) . '...');
@@ -26,27 +31,28 @@ foreach ($list_product as $product){
     echo '   
     <!-- product -->       
     <div>
-          <a href="#">               
-                <img class="w-full max-h-64" src="./upload/' . $img_pro . '" alt="">           
-                <div class="text-center my-2">
-                    <p class="text-2xl font-[400] hover:text-[#EA2F38]">' . $name_pro_short . '</p>
+          <a href="index.php?opt=detail_pro&id_pro='.$id_pro.'">
+            <img class="w-full max-h-64" src="./upload/' . $img_pro . '" alt="">
+            <div class="text-center my-2">
+                <p class="text-2xl font-[400] hover:text-[#EA2F38]">' . $name_pro_short . '</p>
+            </div>
+            <div class="flex items-center justify-between max-w-full px-3 ">
+                <div class="flex flex-col">
+                    <p class="text-xl font-[600] text-[#EA2F38]">$' . $pr . '</p>
+                    <p class="text-xl line-through font-light">' . $pr2 . '</p>
                 </div>
-                <div class="flex items-center justify-between max-w-full px-3 ">
-                    <div class="flex flex-col">
-                        <p class="text-xl font-[600] text-[#EA2F38]">$' . $pr . '</p>
-                        <p class="text-xl line-through font-light">' . $pr2 . '</p>
-                    </div>
-                    <div>
-                        <button class="border border-[#EA2F38] bg-[#EA2F38] text-white  hover:border-white hover:bg-black px-8 py-3">Detail</button>
-                    </div>
+                <div>
+                    <button class="border border-[#EA2F38] bg-[#EA2F38] text-white
+                        hover:border-white hover:bg-black px-8 py-3">Detail</button>
                 </div>
-             </a>
-        </div>          
-    <!-- product end-->
-            ';
+            </div>
+            </a>
+        </div>
+        <!-- product end-->
+        ';
         }
         ?>
-        </div>
     </div>
+</div>
 </div>
 <?php include "./view/footer.php"; ?>

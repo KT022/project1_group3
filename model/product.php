@@ -45,13 +45,10 @@ function update_product($id_pro, $product_name, $img_pro, $price, $price_sale, $
     if ($img_pro != "") {
         $sql = "UPDATE assignment1.products SET name_pro ='" . $product_name . "', img_pro='" . $img_pro . "' , price ='" . $price . "' ,price_sale='" . $price_sale . "', detail='" . $detail . "' ,id_cate='" . $id_cate . "',situation = '" . $situation . "' WHERE id_pro =" . $id_pro;
         // echo $sql;
-
-
     }
     else {
         $sql = "UPDATE assignment1.products SET name_pro ='" . $product_name . "' , price ='" . $price . "' ,price_sale='" . $price_sale . "', detail='" . $detail . "' ,id_cate='" . $id_cate . "' ,situation = '" . $situation . "' WHERE id_pro =" . $id_pro;
         // echo $sql;
-
     }
     // ini_set('display_errors', '1');
     pdo_execute($sql);

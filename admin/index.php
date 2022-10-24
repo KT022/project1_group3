@@ -2,12 +2,19 @@
 include "../model/pdo.php";
 include "../model/category.php";
 include "../model/product.php";
-include "header.php";
+include "../model/users.php";
+include "./views//header.php";
 // controller 
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
+        case 'customerlist':
+            $userlist = load_user();
+            // var_dump($userlist);
+            include './controllers/users/list.php';
+            break;
+
         case 'addcategory':
             //check whether clients clicked submit or not
             if (isset($_POST['add_category']) && ($_POST['category_name'])) {
@@ -15,16 +22,16 @@ if (isset($_GET['act'])) {
                 insert_category($category_name);
                 $notification = "add category successfully";
             }
-            include "./category/add.php";
+            include "./controllers/category/add.php";
             break;
 
         case 'addproduct':
-            include "./product/add.php";
+            include "./controllers/product/add.php";
             break;
 
         case 'list_category':
             $category_list = load_category();
-            include "./category/list.php";
+            include "./controllers/category/list.php";
             break;
 
         case 'deletecategory':
@@ -32,14 +39,14 @@ if (isset($_GET['act'])) {
                 delete_category($_GET['id_cate']);
             }
             $category_list = load_category();
-            include "./category/list.php";
+            include "./controllers/category/list.php";
             break;
 
         case 'updatecategory':
             if (isset($_GET['id_cate']) && $_GET['id_cate'] > 0) {
                 $category = loadone_category($_GET['id_cate']);
             }
-            include "./category/update.php";
+            include "./controllers/category/update.php";
             break;
 
         case 'editcategory':
@@ -80,7 +87,7 @@ if (isset($_GET['act'])) {
                 $notification = "add product successfully" . "<br>" . $file_result;
             }
             $category_list = load_category();
-            include "./product/add.php";
+            include "./controllers/product/add.php";
             break;
 
         case 'listproducts':
@@ -95,7 +102,7 @@ if (isset($_GET['act'])) {
             $category_list = load_category();
             // var_dump($category_list);
             $product_list = load_product($keyword, $id_cate);
-            include "./product/list.php";
+            include "./controllers/product/list.php";
             break;
 
         case 'deleteproduct':
@@ -104,7 +111,7 @@ if (isset($_GET['act'])) {
             }
             echo $_GET['id_pro'];
             $product_list = load_product("", 0);
-            include "./product/list.php";
+            include "./controllers/product/list.php";
             break;
 
         case 'updateproduct':
@@ -112,7 +119,7 @@ if (isset($_GET['act'])) {
                 $product = loadone_product($_GET['id_pro']);
             }
             $category_list = load_category();
-            include "./product/update.php";
+            include "./controllers/product/update.php";
             break;
 
         case 'editproduct':
@@ -142,13 +149,13 @@ if (isset($_GET['act'])) {
                 ini_set('display_errors', '1');
             }
             $product_list = load_product("", 0);
-            include "./product/list.php";
+            include "./controllers/product/list.php";
             break;
 
         default:
-            include './home.php';
+            include './views/home.php';
             break;
     }
 }
 
-include "footer.php";
+include "./views/footer.php";

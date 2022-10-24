@@ -55,7 +55,13 @@
                 <nav>
                     <ul>
                         <li class="dropdown">
-                            <a class="dropbtn" href="#">
+                            <a class="dropbtn" href="
+                            <?php
+if (isset($_SESSION['name_user'])) {
+    echo 'index.php?opt=account';
+} else
+    echo 'index.php?opt=login';
+?>">
                                 <section
                                     class="border border-[#EA2F38] bg-[#EA2F38] rounded-full w-10 h-10 flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -80,33 +86,45 @@
                         </svg>
                     </section>
                 </a>
+                <a href="./admin/index.php">
+                    <section
+                        class="border border-[#EA2F38] bg-[#EA2F38] rounded-full w-10 h-10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+
+                    </section>
+                </a>
             </section>
         </section>
     </header>
 
-      <!-- Menu -->
-      <nav class="sticky top-0 bg-black menu1">
+    <!-- Menu -->
+    <nav class="sticky top-0 bg-black menu1">
         <ul class="w-[75%] mx-auto flex items-center gap-x-8s">
             <a class="text-white font-[500] text-[17px] first-letter:uppercase" href="index.php">
-            <li class="menu py-3 px-8 hover:bg-[#ef222d]">
+                <li class="menu py-3 px-8 hover:bg-[#ef222d]">
                     home
                 </li>
             </a>
-            <a class="text-white font-[500] text-[17px] first-letter:uppercase" href="index.php?opt=shop">
-            <li class="menu py-3 px-8 hover:bg-[#ef222d]">
+            <a class="text-white font-[500] text-[17px] first-letter:uppercase"
+                href="index.php?opt=shop">
+                <li class="menu py-3 px-8 hover:bg-[#ef222d]">
                     shop
                 </li>
             </a>
             <a class="text-white font-[500] text-[17px] first-letter:uppercase" href="#">
-            <li class="menu py-3 px-8 hover:bg-[#ef222d]">
+                <li class="menu py-3 px-8 hover:bg-[#ef222d]">
                     about us
                 </li>
             </a>
             <a class="text-white font-[500] text-[17px] first-letter:uppercase" href="#">
-            <li class="menu py-3 px-8 hover:bg-[#ef222d]">
+                <li class="menu py-3 px-8 hover:bg-[#ef222d]">
                     news
                 </li>
             </a>
-            
+
         </ul>
     </nav>

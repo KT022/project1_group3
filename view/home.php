@@ -107,7 +107,7 @@ foreach ($list_product_best as $product) {
     echo '
     <!-- product -->       
     <div>
-          <a href="#">               
+          <a href="index.php?opt=detail_pro&id_pro='.$id_pro.'">               
                 <img class="w-full max-h-64" src="./upload/' . $img_pro . '" alt="">           
                 <div class="text-center my-2">
                     <p class="text-2xl font-[400] hover:text-[#EA2F38]">' . $name_pro_short . '</p>
